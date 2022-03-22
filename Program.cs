@@ -19,7 +19,7 @@ namespace snake
 
 
             HorizontalLines first = new HorizontalLines(1,33,7,'_');
-            VerticalLines second = new VerticalLines(1, 1, 7, '|');
+            VerticalLines second = new VerticalLines(1, 1, 7, '+');
             second.Draw();
             first.Draw();
 
