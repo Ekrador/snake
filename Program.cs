@@ -8,29 +8,32 @@ namespace snake
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point(1,5,'*');
-          
-
-            p1.Draw();
-
-            Point p2 = new Point(3, 5, '#');
+   
+            Point p2 = new Point(3, 5, '*');
          
 
 
-            HorizontalLines first = new HorizontalLines(1,33,7,'_');
-            VerticalLines second = new VerticalLines(1, 1, 7, '+');
-            second.Draw();
-            first.Draw();
+            HorizontalLines upline = new HorizontalLines(0,78,0,'#');
+            HorizontalLines downline = new HorizontalLines(0, 78, 24, '#');
+            VerticalLines leftline = new VerticalLines(0, 0, 24, '#');
+            VerticalLines rightline = new VerticalLines(78, 0, 24, '#');
+            upline.Draw();
+            downline.Draw();
+            leftline.Draw();
+            rightline.Draw();
             Snake snake = new Snake(p2, 10, Direction.Right);
             snake.Draw();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key);
+                    
+                }
+                Thread.Sleep(100);
+                snake.Move();
+            }
             Console.ReadLine();
         }
     }
