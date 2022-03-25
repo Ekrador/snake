@@ -47,6 +47,21 @@ namespace snake
             if (key == ConsoleKey.DownArrow)
                 direction = Direction.Down;
         }
+
+        internal bool eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                food.symb = head.symb;
+                plist.Add(food);
+                return true;
+            }
+            else 
+                return false;
+
+        }
+
         public Point GetNextPoint()
         {
             Point head = plist.Last();
@@ -54,5 +69,7 @@ namespace snake
             NextPoint.Move(1, direction);
             return NextPoint;
         }
+       
+
     }
 }
